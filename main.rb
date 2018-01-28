@@ -24,12 +24,12 @@ begin
     p "@#{toot.account.acct}: #{content}" if debug
     haiku = reviewer.find(content)
     if haiku then
-      postcontent = "@#{toot.account.acct} 俳句を発見しました！\n#{haiku.phrases[0].join("")} #{haiku.phrases[1].join("")} #{haiku.phrases[2].join("")}"
-      p postcontent if debug
+      postcontent = "@#{toot.account.acct} 俳句を発見しました！\n『#{haiku.phrases[0].join("")} #{haiku.phrases[1].join("")} #{haiku.phrases[2].join("")}』"
+      p "俳句検知: #{postcontent}" if debug
       # rest.create_status(text, in_reply_to_id, media_ids, visibility)
       rest.create_status(postcontent, toot.id, "", "unlisted") if toot.in_reply_to_id.nil? && !toot.reblogged?
     elsif debug
-      p "not haiku"
+      p "俳句なし"
     end
   end
 rescue => e
