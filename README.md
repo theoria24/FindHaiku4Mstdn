@@ -18,8 +18,8 @@ access_token: tx8j4j3yb5ibxuns6i3w73ndpffmg4c7jxcr7jr5psgn5de4a38k5d5jjc4tsir8
 - 拗音とか？
   - [r7kamura/ikku](https://github.com/r7kamura/ikku)に依存。
   - フォークして対応？
-- 目標のトゥートの公開範囲に拘わらず未収載で返信する
-  - [tootsuite/mastodon-api](https://github.com/tootsuite/mastodon-api)を使いこなせていない。トゥートの公開範囲を取れない。
+- トゥートの公開範囲
+  - 未収載以上のものには未収載で返信。非公開以下は返信しないように変更。
 - 反応しないトゥートの判断が雑
   - 自分のトゥートに反応して無限ループが発生するため、リプライをすべて除外している。
 
