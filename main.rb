@@ -26,8 +26,7 @@ begin
       if haiku then
         postcontent = "@#{toot.account.acct} 俳句を発見しました！\n『#{haiku.phrases[0].join("")} #{haiku.phrases[1].join("")} #{haiku.phrases[2].join("")}』"
         p "俳句検知: #{postcontent}" if debug
-        p "BT? #{toot.reblogged?}"
-        if toot.in_reply_to_id.nil? && !(toot.reblogged?) then
+        if toot.in_reply_to_id.nil? && toot.attributes["reblog"].nil? then
           if toot.visibility == "public" || toot.visibility == "unlisted" then
             # rest.create_status(text, in_reply_to_id, media_ids, visibility)
             rest.create_status(postcontent, toot.id)
@@ -42,8 +41,7 @@ begin
         p "俳句なし"
       end
     elsif toot.kind_of?(Mastodon::Notification) then
-      p "Notification!" if debug
-      p "type: #{toot.type} by #{toot.account.id}" if debug
+      p "#{toot.type} by #{toot.account.id}" if debug
       rest.follow(toot.account.id) if toot.type == "follow"
     end
   end
