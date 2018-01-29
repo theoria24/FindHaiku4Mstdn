@@ -42,8 +42,7 @@ begin
       end
     elsif toot.kind_of?(Mastodon::Notification) then
       p "Notification!" if debug
-      p "type: #{toot.type}" if debug
-      p "followed by #{toot.account.id}" if debug
+      p "type: #{toot.type} by #{toot.account.id}" if debug
       rest.follow(toot.account.id) if toot.type == "follow"
     end
   end
