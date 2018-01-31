@@ -20,25 +20,25 @@ reviewer = Ikku::Reviewer.new
 begin
   stream.user() do |toot|
     if toot.kind_of?(Mastodon::Status) then
-      content = Sanitize.clean(toot.content)
-      p "@#{toot.account.acct}: #{content}" if debug
-      haiku = reviewer.find(content)
-      if haiku then
-        postcontent = "@#{toot.account.acct} 俳句を発見しました！\n『#{haiku.phrases[0].join("")} #{haiku.phrases[1].join("")} #{haiku.phrases[2].join("")}』"
-        p "俳句検知: #{postcontent}" if debug
+      if toot.visibility == "public" || toot.visibility == "unlisted" then
         if toot.in_reply_to_id.nil? && toot.attributes["reblog"].nil? then
-          if toot.visibility == "public" || toot.visibility == "unlisted" then
+          content = Sanitize.clean(toot.content)
+          p "@#{toot.account.acct}: #{content}" if debug
+          haiku = reviewer.find(content)
+          if haiku then
+            postcontent = "@#{toot.account.acct} 俳句を発見しました！\n『#{haiku.phrases[0].join("")} #{haiku.phrases[1].join("")} #{haiku.phrases[2].join("")}』"
+            p "俳句検知: #{postcontent}" if debug
             # rest.create_status(text, in_reply_to_id, media_ids, visibility)
             rest.create_status(postcontent, toot.id)
             p "post!" if debug
           elsif debug
-            p "private toot"
+            p "俳句なし"
           end
         elsif debug
           p "BT or reply"
         end
       elsif debug
-        p "俳句なし"
+        p "private toot"
       end
     elsif toot.kind_of?(Mastodon::Notification) then
       p "#{toot.type} by #{toot.account.id}" if debug

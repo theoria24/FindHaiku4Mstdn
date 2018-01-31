@@ -12,15 +12,14 @@ access_token: tx8j4j3yb5ibxuns6i3w73ndpffmg4c7jxcr7jr5psgn5de4a38k5d5jjc4tsir8
 4. `bundle exec ruby main.rb`
 5.  ✌('ω'✌ )三✌('ω')✌三( ✌'ω')✌
 
-## 現状の問題
-- 撥音とか？
+## 現状
+- 撥音とかがおかしい？
   - [r7kamura/ikku](https://github.com/r7kamura/ikku)に依存。
   - フォークして対応？
 - トゥートの公開範囲
   - 未収載以上のものに返信。非公開以下は返信しない。
 - 反応しないトゥートの判断が雑
-  - ブーストの除外に対応したつもり。
-  - 自分のトゥートに反応して無限ループが発生するため、リプライをすべて除外している。
+  - リプライをすべて除外している。
 
 ## その他
 問題を発見した方は[@theoria@wug.fun](https://wug.fun/@theoria)や[@theoria@knzk.me](https://knzk.me/@theoria)、[@theoria@theboss.tech](https://theboss.tech/@theoria)、[@theoria@mstdn.jp](https://mstdn.jp/@theoria)、あるいは[Twitter](https://twitter.com/_theoria)に連絡していただけるとありがたいです。ここに[Issue](https://github.com/theoria24/FindHaiku4Mstdn/issues/new)を立てていただいても構いません。
