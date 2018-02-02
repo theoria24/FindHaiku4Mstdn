@@ -26,10 +26,13 @@ begin
           p "@#{toot.account.acct}: #{content}" if debug
           haiku = reviewer.find(content)
           if haiku then
-            postcontent = "@#{toot.account.acct} 俳句を発見しました！\n『#{haiku.phrases[0].join("")} #{haiku.phrases[1].join("")} #{haiku.phrases[2].join("")}』"
+            postcontent = "『#{haiku.phrases[0].join("")} #{haiku.phrases[1].join("")} #{haiku.phrases[2].join("")}』"
             p "俳句検知: #{postcontent}" if debug
-            # rest.create_status(text, in_reply_to_id, media_ids, visibility)
-            rest.create_status(postcontent, toot.id)
+            if toot.attributes["spoiler_text"].empty? then
+              rest.create_status("@#{toot.account.acct} 俳句を発見しました！\n" + postcontent, toot.id)
+            else
+              rest.create_status("@#{toot.account.acct}\n" + postcontent, in_reply_to_id: toot.id, spoiler_text: "俳句を発見しました！")
+            end
             p "post!" if debug
           elsif debug
             p "俳句なし"
