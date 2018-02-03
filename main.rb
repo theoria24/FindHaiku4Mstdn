@@ -28,7 +28,7 @@ begin
           if haiku then
             postcontent = "『#{haiku.phrases[0].join("")} #{haiku.phrases[1].join("")} #{haiku.phrases[2].join("")}』"
             p "俳句検知: #{postcontent}" if debug
-            if toot.attributes["tags"].include?("theboss_tech")
+            if toot.attributes["tags"].map{|t| t["name"]}.include?("theboss_tech").include?("theboss_tech")
               vis = "public"
             else
               vis = "unlisted"
