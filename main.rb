@@ -28,10 +28,15 @@ begin
           if haiku then
             postcontent = "『#{haiku.phrases[0].join("")} #{haiku.phrases[1].join("")} #{haiku.phrases[2].join("")}』"
             p "俳句検知: #{postcontent}" if debug
-            if toot.attributes["spoiler_text"].empty? then
-              rest.create_status("@#{toot.account.acct} 俳句を発見しました！\n" + postcontent, toot.id)
+            if toot.attributes["tags"].include?("theboss_tech")
+              vis = "public"
             else
-              rest.create_status("@#{toot.account.acct}\n" + postcontent, in_reply_to_id: toot.id, spoiler_text: "俳句を発見しました！")
+              vis = "unlisted"
+            end
+            if toot.attributes["spoiler_text"].empty? then
+              rest.create_status("@#{toot.account.acct} 俳句を発見しました！\n" + postcontent, toot.id, visibility: vis)
+            else
+              rest.create_status("@#{toot.account.acct}\n" + postcontent, in_reply_to_id: toot.id, spoiler_text: "俳句を発見しました！", visibility: vis)
             end
             p "post!" if debug
           elsif debug
