@@ -6,6 +6,7 @@ require 'sanitize'
 
 config = YAML.load_file("./key.yml")
 debug = true
+unfollow_str = "俳句検出を停止してください"
 
 stream = Mastodon::Streaming::Client.new(
   base_url: "https://" + config["base_url"],
@@ -17,12 +18,29 @@ rest = Mastodon::REST::Client.new(
 
 reviewer = Ikku::Reviewer.new
 
+reviewer_id = rest.verify_credentials().id
+
 begin
   stream.user() do |toot|
     if toot.kind_of?(Mastodon::Status) then
-      if toot.visibility == "public" || toot.visibility == "unlisted" then
+      content = Sanitize.clean(toot.content)
+      unfollow_request = false
+      toot.mentions.each do |mention|
+        if mention.id == reviewer_id
+          if !content.index(unfollow_str).nil?
+            unfollow_request = true
+            relationships = rest.relationships([toot.account.id])
+            relationships.each do |relationship|
+              if relationship.following?
+                rest.unfollow(toot.account.id)
+                p "unfollow"
+              end
+            end
+          end
+        end
+      end
+      if !unfollow_request && (toot.visibility == "public" || toot.visibility == "unlisted") then
         if toot.in_reply_to_id.nil? && toot.attributes["reblog"].nil? then
-          content = Sanitize.clean(toot.content)
           p "@#{toot.account.acct}: #{content}" if debug
           haiku = reviewer.find(content)
           if haiku then
