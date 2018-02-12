@@ -51,9 +51,9 @@ begin
               postcontent += ' #theboss_tech'
             end
             if toot.attributes["spoiler_text"].empty? then
-              rest.create_status("@#{toot.account.acct} 俳句を発見しました！\n" + postcontent, in_reply_to_id: toot.id, visibility: vis)
+              rest.create_status("@#{toot.account.acct} 俳句を発見致しました！\n" + postcontent, in_reply_to_id: toot.id)
             else
-              rest.create_status("@#{toot.account.acct}\n" + postcontent, in_reply_to_id: toot.id, spoiler_text: "俳句を発見しました！", visibility: vis)
+              rest.create_status("@#{toot.account.acct}\n" + postcontent, in_reply_to_id: toot.id, spoiler_text: "俳句を発見致しました！")
             end
             p "post!" if debug
           elsif debug
