@@ -44,13 +44,11 @@ begin
           p "@#{toot.account.acct}: #{content}" if debug
           haiku = reviewer.find(content)
           if haiku then
-            postcontent = "『#{haiku.phrases[0].join("")} #{haiku.phrases[1].join("")} #{haiku.phrases[2].join("")}』"
+            postcontent = "『#{haiku.phrases[0].join("")}#{haiku.phrases[1].join("")}#{haiku.phrases[2].join("")}』"
             p "俳句検知: #{postcontent}" if debug
             p "tags: #{toot.attributes["tags"]}" if debug
             if toot.attributes["tags"].map{|t| t["name"]}.include?("theboss_tech") then
-              vis = "public"
-            else
-              vis = "unlisted"
+              postcontent += ' #theboss_tech'
             end
             if toot.attributes["spoiler_text"].empty? then
               rest.create_status("@#{toot.account.acct} 俳句を発見しました！\n" + postcontent, in_reply_to_id: toot.id, visibility: vis)
