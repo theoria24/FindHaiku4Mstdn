@@ -20,6 +20,7 @@ reviewer = Ikku::Reviewer.new
 
 reviewer_id = rest.verify_credentials().id
 
+c = 0
 stream.user() do |toot|
   begin
     if toot.kind_of?(Mastodon::Status) then
