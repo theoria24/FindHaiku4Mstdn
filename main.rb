@@ -20,8 +20,8 @@ reviewer = Ikku::Reviewer.new
 
 reviewer_id = rest.verify_credentials().id
 
-begin
-  stream.user() do |toot|
+stream.user() do |toot|
+  begin
     if toot.kind_of?(Mastodon::Status) then
       content = Sanitize.clean(toot.content)
       unfollow_request = false
@@ -69,9 +69,15 @@ begin
       p "#{toot.type} by #{toot.account.id}" if debug
       rest.follow(toot.account.id) if toot.type == "follow"
     end
+  rescue => e
+    puts e
+    c += 1
+    if t < 3
+      p "retry"
+      retry
+    else
+      p "skip"
+      next
+    end
   end
-rescue => e
-  p "error"
-  puts e
-  retry
 end
