@@ -14,10 +14,10 @@ GEM
     addressable (2.5.2)
       public_suffix (>= 2.0.2, < 4.0)
     buftok (0.2.0)
-    crass (1.0.3)
-    domain_name (0.5.20170404)
+    crass (1.0.4)
+    domain_name (0.5.20180417)
       unf (>= 0.0.5, < 1.0.0)
-    ffi (1.9.18)
+    ffi (1.9.25)
     http (2.2.2)
       addressable (~> 2.3)
       http-cookie (~> 1.0)
@@ -32,18 +32,18 @@ GEM
     mini_portile2 (2.3.0)
     natto (1.1.1)
       ffi (>= 1.9.0)
-    nokogiri (1.8.1)
+    nokogiri (1.8.5)
       mini_portile2 (~> 2.3.0)
-    nokogumbo (1.4.13)
+    nokogumbo (1.5.0)
       nokogiri
-    public_suffix (3.0.1)
-    sanitize (4.5.0)
+    public_suffix (3.0.3)
+    sanitize (4.6.6)
       crass (~> 1.0.2)
       nokogiri (>= 1.4.4)
-      nokogumbo (~> 1.4.1)
+      nokogumbo (~> 1.4)
     unf (0.1.4)
       unf_ext
-    unf_ext (0.0.7.4)
+    unf_ext (0.0.7.5)
 
 PLATFORMS
   ruby
@@ -51,7 +51,7 @@ PLATFORMS
 DEPENDENCIES
   ikku (~> 0.1.4)
   mastodon-api!
-  sanitize (~> 4.5)
+  sanitize (~> 4.6)
 
 BUNDLED WITH
-   1.16.0
+   1.16.5
