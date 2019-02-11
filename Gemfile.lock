@@ -1,46 +1,48 @@
 GIT
   remote: https://github.com/tootsuite/mastodon-api.git
-  revision: a3ff60a872191aa2f499a2b4c7a85045ead14e64
-  ref: a3ff60a
+  revision: 4e75becc834278b3c4f5e9c62ee1b0f7b5cfa0c1
+  ref: 4e75bec
   specs:
-    mastodon-api (1.1.0)
-      addressable (~> 2.4)
-      buftok
-      http (~> 2.0)
+    mastodon-api (2.0.0)
+      addressable (~> 2.6)
+      buftok (~> 0)
+      http (~> 3.3)
+      oj (~> 3.7)
 
 GEM
   remote: https://rubygems.org/
   specs:
-    addressable (2.5.2)
+    addressable (2.6.0)
       public_suffix (>= 2.0.2, < 4.0)
     buftok (0.2.0)
     crass (1.0.4)
     domain_name (0.5.20180417)
       unf (>= 0.0.5, < 1.0.0)
     ffi (1.9.25)
-    http (2.2.2)
+    http (3.3.0)
       addressable (~> 2.3)
       http-cookie (~> 1.0)
-      http-form_data (~> 1.0.1)
+      http-form_data (~> 2.0)
       http_parser.rb (~> 0.6.0)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
-    http-form_data (1.0.3)
+    http-form_data (2.1.1)
     http_parser.rb (0.6.0)
     ikku (0.1.4)
       natto
-    mini_portile2 (2.3.0)
+    mini_portile2 (2.4.0)
     natto (1.1.1)
       ffi (>= 1.9.0)
-    nokogiri (1.8.5)
-      mini_portile2 (~> 2.3.0)
-    nokogumbo (1.5.0)
-      nokogiri
+    nokogiri (1.10.1)
+      mini_portile2 (~> 2.4.0)
+    nokogumbo (2.0.1)
+      nokogiri (~> 1.8, >= 1.8.4)
+    oj (3.7.8)
     public_suffix (3.0.3)
-    sanitize (4.6.6)
+    sanitize (5.0.0)
       crass (~> 1.0.2)
-      nokogiri (>= 1.4.4)
-      nokogumbo (~> 1.4)
+      nokogiri (>= 1.8.0)
+      nokogumbo (~> 2.0)
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.7.5)
@@ -49,9 +51,9 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  ikku (~> 0.1.4)
+  ikku (>= 0.1.4)
   mastodon-api!
-  sanitize (~> 4.6)
+  sanitize (~> 5.0)
 
 BUNDLED WITH
-   1.16.5
+   1.17.2
