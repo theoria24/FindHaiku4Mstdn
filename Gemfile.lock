@@ -1,7 +1,7 @@
 GIT
-  remote: https://github.com/tootsuite/mastodon-api.git
-  revision: 4e75becc834278b3c4f5e9c62ee1b0f7b5cfa0c1
-  ref: 4e75bec
+  remote: https://github.com/theoria24/mastodon-api.git
+  revision: 0dbf540ceb1655ebe7a4c13699e8e5f8e063e142
+  branch: dev
   specs:
     mastodon-api (2.0.0)
       addressable (~> 2.6)
