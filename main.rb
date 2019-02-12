@@ -47,7 +47,7 @@ begin
             postcontent = "『#{haiku.phrases[0].join("")} #{haiku.phrases[1].join("")} #{haiku.phrases[2].join("")}』"
             p "俳句検知: #{postcontent}" if debug
             if toot.attributes["spoiler_text"].empty? then
-              rest.create_status("@#{toot.account.acct} 俳句を発見しました！\n" + postcontent, toot.id)
+              rest.create_status("@#{toot.account.acct} 俳句を発見しました！\n" + postcontent, in_reply_to_id: toot.id)
             else
               rest.create_status("@#{toot.account.acct}\n" + postcontent, in_reply_to_id: toot.id, spoiler_text: "俳句を発見しました！")
             end
