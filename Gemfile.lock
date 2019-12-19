@@ -12,13 +12,13 @@ GIT
 GEM
   remote: https://rubygems.org/
   specs:
-    addressable (2.6.0)
-      public_suffix (>= 2.0.2, < 4.0)
+    addressable (2.7.0)
+      public_suffix (>= 2.0.2, < 5.0)
     buftok (0.2.0)
-    crass (1.0.4)
-    domain_name (0.5.20180417)
+    crass (1.0.5)
+    domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
-    ffi (1.9.25)
+    ffi (1.11.3)
     http (3.3.0)
       addressable (~> 2.3)
       http-cookie (~> 1.0)
@@ -31,21 +31,21 @@ GEM
     ikku (0.1.4)
       natto
     mini_portile2 (2.4.0)
-    natto (1.1.1)
+    natto (1.1.2)
       ffi (>= 1.9.0)
     nokogiri (1.10.7)
       mini_portile2 (~> 2.4.0)
-    nokogumbo (2.0.1)
+    nokogumbo (2.0.2)
       nokogiri (~> 1.8, >= 1.8.4)
-    oj (3.7.8)
-    public_suffix (3.0.3)
-    sanitize (5.0.0)
+    oj (3.10.0)
+    public_suffix (4.0.1)
+    sanitize (5.1.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.8.0)
       nokogumbo (~> 2.0)
     unf (0.1.4)
       unf_ext
-    unf_ext (0.0.7.5)
+    unf_ext (0.0.7.6)
 
 PLATFORMS
   ruby
