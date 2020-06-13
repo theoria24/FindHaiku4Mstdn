@@ -40,7 +40,7 @@ begin
         end
       end
       if !unfollow_request && (toot.visibility == "public" || toot.visibility == "unlisted") then
-        if toot.in_reply_to_id.nil? && toot.attributes["reblog"].nil? then
+        if toot.in_reply_to_id.nil? && toot.attributes["reblog"].nil? && content.size < 35 then
           p "@#{toot.account.acct}: #{content}" if debug
           haiku = reviewer.find(content)
           if haiku then
@@ -56,7 +56,7 @@ begin
             p "俳句なし"
           end
         elsif debug
-          p "BT or reply"
+          p "BT or reply or too long"
         end
       elsif debug
         p "private toot"
